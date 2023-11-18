@@ -6,11 +6,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // import next image
 import Image from "next/image";
-import '../styles/main.scss'
+import "../styles/main.scss";
 
 // Import Swiper styles
 import "swiper/css";
-import 'swiper/css/effect-fade';
+import "swiper/css/effect-fade";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
@@ -20,7 +20,13 @@ import Button from "./Button";
 // import './styles.css';
 
 // import required modules
-import { FreeMode, Autoplay, Thumbs, EffectFade, Navigation } from "swiper/modules";
+import {
+  FreeMode,
+  Autoplay,
+  Thumbs,
+  EffectFade,
+  Navigation,
+} from "swiper/modules";
 // const mySwiper = {
 //   height: '20%', // Note: You should use quotes for the value
 //   boxSizing: 'border-box', // CSS properties use camelCase in JavaScript
@@ -38,7 +44,7 @@ export default function HeroSlider() {
       <Swiper
         spaceBetween={10}
         navigation={false}
-        effect={'fade'}
+        effect={"fade"}
         thumbs={{
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
@@ -51,6 +57,7 @@ export default function HeroSlider() {
       >
         <SwiperSlide>
           <Image
+            alt=""
             className="slightly-zoomed-image"
             layout="fill"
             src="/pic-1.jpg"
@@ -95,6 +102,7 @@ export default function HeroSlider() {
         </SwiperSlide>
         <SwiperSlide>
           <Image
+            alt=""
             className="slightly-zoomed-image"
             layout="fill"
             src="/pic-6.jpg"
@@ -139,6 +147,7 @@ export default function HeroSlider() {
         </SwiperSlide>
         <SwiperSlide>
           <Image
+            alt=""
             className="slightly-zoomed-image"
             layout="fill"
             src="/pic-4.jpg"
@@ -183,6 +192,7 @@ export default function HeroSlider() {
         </SwiperSlide>
         <SwiperSlide>
           <Image
+            alt=""
             className="slightly-zoomed-image"
             layout="fill"
             src="/pic-7.jpg"
@@ -227,6 +237,7 @@ export default function HeroSlider() {
         </SwiperSlide>
         <SwiperSlide>
           <Image
+            alt=""
             className="slightly-zoomed-image"
             layout="fill"
             src="/pic-5.jpg"
@@ -269,7 +280,6 @@ export default function HeroSlider() {
           </div>
           <div className="home__shadow"></div>
         </SwiperSlide>
-
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
@@ -281,23 +291,23 @@ export default function HeroSlider() {
         className="mySwiper-first"
       >
         <SwiperSlide>
-          <Image layout="fill" src="/pic-1.jpg" />
+          <Image alt="" layout="fill" src="/pic-1.jpg" />
           <div className="home__card-shadow"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <Image layout="fill" src="/pic-6.jpg" />
+          <Image alt="" layout="fill" src="/pic-6.jpg" />
           <div className="home__card-shadow"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <Image layout="fill" src="/pic-4.jpg" />
+          <Image alt="" layout="fill" src="/pic-4.jpg" />
           <div className="home__card-shadow"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <Image layout="fill" src="/pic-7.jpg" />
+          <Image alt="" layout="fill" src="/pic-7.jpg" />
           <div className="home__card-shadow"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <Image layout="fill" src="/pic-5.jpg" />
+          <Image alt="" layout="fill" src="/pic-5.jpg" />
           <div className="home__card-shadow"></div>
         </SwiperSlide>
       </Swiper>
