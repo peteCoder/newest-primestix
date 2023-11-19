@@ -56,9 +56,7 @@ export const POST = async (res) => {
       address: email,
     },
     to: process.env.SMTP_EMAIL_RECEPIENT,
-    subject: `Message from Primestix Website from ${
-      firstName ? firstName : ""
-    } ${lastName ? lastName : ""}`,
+    subject: `Message from Primestix Website`,
     html: `${formatEmailMessage(userData)}`,
   };
 
