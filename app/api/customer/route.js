@@ -1,3 +1,4 @@
+import { formatEmailMessage } from "@/lib/helpers";
 import { sanityClient } from "@/lib/sanityClient";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
@@ -7,7 +8,8 @@ export const GET = async (res) => {
 };
 
 export const POST = async (res) => {
-  const { firstName, lastName, phoneNumber, email, message } = await res.json();
+  const userData = await res.json();
+  const { firstName, lastName, phoneNumber, email, message } = userData;
 
   const doc = {
     _type: "customer",
@@ -54,9 +56,10 @@ export const POST = async (res) => {
       address: email,
     },
     to: process.env.SMTP_EMAIL_RECEPIENT,
-    subject: `Message from ${firstName} ${lastName}, a customer of Primestix.`,
-    text: `Customer email: ${email}. \n\n Customer message: ${message}`,
-    html: `<h2>${message}</h2>`,
+    subject: `Message from Primestix Website from ${
+      firstName ? firstName : ""
+    } ${lastName ? lastName : ""}`,
+    html: `${formatEmailMessage(userData)}`,
   };
 
   if (_id) {
