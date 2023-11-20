@@ -7,7 +7,11 @@ export const getAllCommunities = async () => {
         short_description,
         description,
         location,
-        image,
+        image{
+          asset->{
+              url
+          }
+        },
     }`;
 
   const communities = await sanityClient.fetch(query);

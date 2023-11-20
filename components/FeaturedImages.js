@@ -42,7 +42,7 @@ const FeaturedImages = () => {
                 >
                   <div className="w-full relative py-5 h-full">
                     <Image
-                      src="/home-1.jpg"
+                      src={community?.image.asset.url}
                       className="relative object-cover h-[400px]"
                       width={1200}
                       height={300}
