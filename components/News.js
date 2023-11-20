@@ -14,10 +14,11 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { getAllNews } from "@/actions/getAllNews";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const News = () => {
   const [news, setNews] = useState([]);
+  const router = useRouter()
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -29,7 +30,6 @@ const News = () => {
     fetchNews();
   }, []);
 
-  // console.log(news);
 
   return (
     <div className="relative md:px-0 px-5">
@@ -74,17 +74,18 @@ const News = () => {
           >
             {news.map((n) => (
               <SwiperSlide
+                onClick={() => router.push(`/news/${n._id}`)}
                 key={n?._id}
                 className="news-slider__wrp swiper-wrapper"
               >
-                <div className="news-slider__item swiper-slide">
+                <div
+                  className="news-slider__item swiper-slide"
+                >
                   <div className="news__item">
                     {/* Here */}
                     <FormattedDate createdAt={n?._createdAt} />
                     <div>
-                      <a className="news__title" href={`/news/${n._id}`}>
-                        {n?.title}
-                      </a>
+                      <a className="news__title">{n?.title}</a>
                     </div>
 
                     <p className="news__txt">{n?.body}</p>
