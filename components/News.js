@@ -14,6 +14,7 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { getAllNews } from "@/actions/getAllNews";
+import Link from "next/link";
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -77,10 +78,14 @@ const News = () => {
                 className="news-slider__wrp swiper-wrapper"
               >
                 <div className="news-slider__item swiper-slide">
-                  <a href="#" className="news__item">
+                  <div className="news__item">
                     {/* Here */}
                     <FormattedDate createdAt={n?._createdAt} />
-                    <div className="news__title">{n?.title}</div>
+                    <div>
+                      <a className="news__title" href={`/news/${n._id}`}>
+                        {n?.title}
+                      </a>
+                    </div>
 
                     <p className="news__txt">{n?.body}</p>
 
@@ -93,7 +98,7 @@ const News = () => {
                         alt=""
                       />
                     </div>
-                  </a>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
@@ -105,7 +110,6 @@ const News = () => {
 };
 
 const FormattedDate = ({ createdAt }) => {
-  
   const date = new Date(createdAt);
   const dateString = date.toString();
   const dateArray = dateString.split(" ");

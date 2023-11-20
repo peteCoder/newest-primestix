@@ -4,25 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import { urlFor } from "@/lib/sanityClient";
-
 const Project = ({ data }) => {
   console.log(data);
-
-
-  console.log(data?.gallery[0]?.imageUrl?.asset?.url);
 
   return (
     <Link href={`/projects/${data?._id}`}>
       <div className="shadow-2xl">
         <div
           style={{
-            // You can use the urlFor image builder function here if you'd like!
-            // urlFor(data?.gallery[0].ImageUrl).url()
-            // data?.gallery[0]?.ImageUrl?.asset?.url
-
-            // backgroundImage: data?.gallery?.length > 0 ? `url(${urlFor(data?.gallery[0]?.ImageUrl)?.url()})` : ``,
-            backgroundImage: `url(${data?.gallery[0]?.imageUrl?.asset?.url})`,
+            backgroundImage: `url(${
+              data?.gallery?.length > 0
+                ? data?.gallery[0]?.imageUrl?.asset?.url
+                : data?.bannerImage?.asset?.url
+                ? data?.bannerImage?.asset?.url
+                : ""
+            })`,
             backgroundPosition: "50% center",
           }}
           className="h-[305px] bg-no-repeat bg-cover w-full"
